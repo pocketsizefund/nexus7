@@ -1,0 +1,21 @@
+[package]
+name = "infrastructure"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "nexus7"
+path = "src/main.rs"
+
+[lib]
+name = "nexus7"
+path = "src/lib.rs"
+
+[features]
+aws = []
+
+[dependencies]
+cargo-machete = "0.6.2"
+hcl-rs = { version = "0.18.0", features = ["perf"] }
+serde = { version = "1.0.207", features = ["derive"] }
+termion = "4.0.2"

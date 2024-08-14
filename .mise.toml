@@ -1,0 +1,46 @@
+[tools]
+rust = "latest"
+pre-commit = "latest"
+"cargo:cargo-machete" = "latest"
+"cargo:cargo-deny" = "latest"
+
+[env]
+RUST_BACKTRACE = "1"
+
+[tasks.cicd]
+description = "run all the tasks"
+depends = ["audit", "format", "lint", "machete", "test"]
+
+[tasks.build]
+description = "build the crate with dev dependencies"
+run = "cargo build --all-features"
+
+[tasks.audit]
+description = "audit rust cargos"
+tools = ["cargo", "rust"]
+depends = ["build"]
+run = "cargo deny check"
+
+[tasks.format]
+description = "format rust cargos"
+tools = ["cargo", "rust"]
+depends = ["build"]
+run = "cargo fmt --all"
+
+[tasks.lint]
+tools = ["cargo", "rust"]
+description = "lint rust crates"
+depends = ["build"]
+run = "cargo clippy --allow-dirty --allow-staged --all --fix"
+
+[tasks.machete]
+description = "check rust crates for unnecessary dependencies"
+tools = ["cargo", "rust"]
+depends = ["build"]
+run = "cargo machete --with-metadata"
+
+[tasks.test]
+description = "test rust cargos"
+tools = ["cargo", "rust"]
+depends = ["build"]
+run = "cargo test --all-features"
