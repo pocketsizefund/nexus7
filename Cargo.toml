@@ -1,7 +1,9 @@
 [package]
 name = "nexus7"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
+license = "MIT"
+description = "Rust SDK for HCL Transpilation"
 
 [lib]
 name = "nexus7"
@@ -14,4 +16,3 @@ aws = []
 cargo-machete = "0.6.2"
 hcl-rs = { version = "0.18.0", features = ["perf"] }
 serde = { version = "1.0.207", features = ["derive"] }
-termion = "4.0.2"
