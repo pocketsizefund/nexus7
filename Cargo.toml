@@ -3,10 +3,6 @@ name = "nexus7"
 version = "0.1.0"
 edition = "2021"
 
-[[bin]]
-name = "nexus7"
-path = "src/main.rs"
-
 [lib]
 name = "nexus7"
 path = "src/lib.rs"
